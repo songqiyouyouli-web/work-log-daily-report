@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 作業ログ日報
 
-## Getting Started
+仕事中に作業ボタンをワンタップするだけで時間を記録し、終業時に自動で集計して日報の下書きを作るWebアプリです。
 
-First, run the development server:
+- 公開URL：https://work-log-daily-report.vercel.app/
+- GitHub：https://github.com/songqiyouyouli-web/work-log-daily-report
+
+## これは何のためのアプリ？
+
+- **対象ユーザー**：毎日日報を提出している会社員（書類確認・メール対応など、細かい作業を1日に何度も切り替える人）
+- **解決したいこと**：終業後に「今日何にどれだけ時間を使ったか」を思い出して書く手間をなくす
+- **やり方**：作業中はボタンをタップするだけ。終業時に集計画面を開けば、グラフと日報の下書きテキストができている
+
+## 画面構成
+
+アプリは2画面のみです。
+
+1. **記録画面**（`/`）：登録した作業ボタンをタップして開始。別のボタンを押すと前の作業は自動で終了する
+2. **集計画面**（`/summary`）：作業ごとの合計時間をグラフで表示し、今日の記録一覧を編集可能。次の日の目標を入力し、「日報をコピー」で下書きテキストをコピーできる
+
+## 技術スタック
+
+| 役割 | 使用技術 |
+| --- | --- |
+| フレームワーク | Next.js 16（App Router）+ React 19 |
+| スタイリング | Tailwind CSS 4 |
+| グラフ | Recharts |
+| データ保存 | ブラウザの `localStorage` のみ（サーバー・データベースなし、ログイン不要） |
+| デプロイ | Vercel |
+
+## 開発環境で動かす
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000) をブラウザで開くと確認できます。データは各ブラウザの `localStorage` に保存されるため、サーバーやデータベースのセットアップは不要です。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 注意事項
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 記録データはブラウザ内の `localStorage` にのみ保存され、サーバーには送信されません
+- 作業名は「書類確認」「メール対応」のような種類のみを想定しており、書類の中身や個人情報は入力しない前提です
+- このREADMEおよび公開デモのデータはすべて架空のものです
