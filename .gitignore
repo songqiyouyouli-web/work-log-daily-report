@@ -42,3 +42,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# 社内ツールの参考スクリーンショット（非公開・個人の参考資料）
+docs/IMG_*.jpeg

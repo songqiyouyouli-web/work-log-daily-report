@@ -42,7 +42,7 @@ export function CopyReportButton({ reportText }: Props) {
       <textarea
         readOnly
         value={reportText}
-        rows={6}
+        rows={16}
         className="w-full rounded-lg border border-black/10 p-3 font-mono text-sm dark:border-white/10 dark:bg-black"
       />
       <div className="flex items-center gap-3">

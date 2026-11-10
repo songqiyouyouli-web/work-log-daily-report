@@ -1,37 +1,27 @@
-import { formatHoursMinutes, formatJapaneseDate } from "./time";
-import type { TaskTotal } from "./types";
+import { formatJapaneseDate } from "./time";
 
-export function buildDailyReportText(
-  totals: TaskTotal[],
-  date: Date,
-  todayGoal: string,
-  nextDayGoal: string,
-): string {
-  const nonZero = totals.filter((t) => t.minutes > 0).sort((a, b) => b.minutes - a.minutes);
-  const totalMinutes = nonZero.reduce((sum, t) => sum + t.minutes, 0);
+const PLACEHOLDER = "（ここに入力）";
 
-  const lines: string[] = [`【本日の業務】${formatJapaneseDate(date)}`];
+export function buildDailyReportText(date: Date, todayGoal: string, nextDayGoal: string): string {
+  const sections: [string, string][] = [
+    ["今日の仕事は何点ですか？(1〜5)", PLACEHOLDER],
+    ["目標", todayGoal.trim() || PLACEHOLDER],
+    ["目標の達成状況（数値で達成できたかわかる目標）", PLACEHOLDER],
+    ["目標に対しての実績", PLACEHOLDER],
+    ["目標達成のためのアクション", PLACEHOLDER],
+    ["アクションの実施状況", PLACEHOLDER],
+    ["前日に掲げたアクションが実行できたかどうか／今日の学び・気づき", PLACEHOLDER],
+    ["次回出勤日の目標とアクション", nextDayGoal.trim() || PLACEHOLDER],
+    ["自由記述（あれば）（任意）", PLACEHOLDER],
+  ];
 
-  if (todayGoal.trim()) {
-    lines.push(`目標：${todayGoal.trim()}`);
-  }
+  const lines: string[] = [`【日報】${formatJapaneseDate(date)}`, ""];
 
-  lines.push("");
-
-  if (nonZero.length === 0) {
-    lines.push("（記録なし）");
-  } else {
-    for (const t of nonZero) {
-      lines.push(`・${t.taskName}：${formatHoursMinutes(t.minutes)}`);
-    }
+  for (const [heading, content] of sections) {
+    lines.push(`■${heading}`);
+    lines.push(content);
     lines.push("");
-    lines.push(`合計：${formatHoursMinutes(totalMinutes)}`);
   }
 
-  if (nextDayGoal.trim()) {
-    lines.push("");
-    lines.push(`明日の予定：${nextDayGoal.trim()}`);
-  }
-
-  return lines.join("\n");
+  return lines.join("\n").trimEnd();
 }

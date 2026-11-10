@@ -17,8 +17,8 @@ export default function SummaryPage() {
     [isLoaded, todayEntries, tasks],
   );
   const reportText = useMemo(
-    () => (isLoaded ? buildDailyReportText(totals, new Date(), todayGoal.today, todayGoal.nextDay) : ""),
-    [isLoaded, totals, todayGoal],
+    () => (isLoaded ? buildDailyReportText(new Date(), todayGoal.today, todayGoal.nextDay) : ""),
+    [isLoaded, todayGoal],
   );
 
   if (!isLoaded) return null;
