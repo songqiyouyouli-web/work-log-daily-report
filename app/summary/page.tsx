@@ -1,24 +1,36 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { CopyReportButton } from "@/components/worklog/CopyReportButton";
 import { GoalField } from "@/components/worklog/GoalField";
 import { LogList } from "@/components/worklog/LogList";
+import { ReportComposer } from "@/components/worklog/ReportComposer";
 import { SummaryChart } from "@/components/worklog/SummaryChart";
 import { aggregateByTask } from "@/lib/aggregate";
-import { buildDailyReportText } from "@/lib/report";
+import { buildDailyReportText, type ComposedSections } from "@/lib/report";
 import { useWorkLog } from "@/lib/useWorkLog";
 
 export default function SummaryPage() {
   const { isLoaded, tasks, todayEntries, todayGoal, updateEntry, deleteEntry, setNextDayGoal } = useWorkLog();
+  const [composed, setComposed] = useState<ComposedSections>({});
 
   const totals = useMemo(
     () => (isLoaded ? aggregateByTask(todayEntries, tasks, new Date()) : []),
     [isLoaded, todayEntries, tasks],
   );
+  const initialNotes = useMemo(
+    () =>
+      isLoaded
+        ? todayEntries
+            .filter((e) => e.memo?.trim())
+            .map((e) => `・${e.taskName}：${e.memo}`)
+            .join("\n")
+        : "",
+    [isLoaded, todayEntries],
+  );
   const reportText = useMemo(
-    () => (isLoaded ? buildDailyReportText(new Date(), todayGoal.today, todayGoal.nextDay) : ""),
-    [isLoaded, todayGoal],
+    () => (isLoaded ? buildDailyReportText(new Date(), todayGoal.today, todayGoal.nextDay, composed) : ""),
+    [isLoaded, todayGoal, composed],
   );
 
   if (!isLoaded) return null;
@@ -38,7 +50,15 @@ export default function SummaryPage() {
       </section>
       <section>
         <h2 className="mb-2 text-lg font-semibold">日報の下書き</h2>
-        <CopyReportButton reportText={reportText} />
+        <ReportComposer
+          initialNotes={initialNotes}
+          todayGoal={todayGoal.today}
+          nextDayGoal={todayGoal.nextDay}
+          onComposed={setComposed}
+        />
+        <div className="mt-3">
+          <CopyReportButton reportText={reportText} />
+        </div>
       </section>
     </div>
   );

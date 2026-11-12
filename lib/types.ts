@@ -10,6 +10,7 @@ export type LogEntry = {
   taskName: string;
   startTime: string;
   endTime: string | null;
+  memo?: string;
 };
 
 export type DailyGoal = {

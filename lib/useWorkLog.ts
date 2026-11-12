@@ -84,7 +84,7 @@ export function useWorkLog() {
     });
   }, []);
 
-  const updateEntry = useCallback((id: string, patch: Partial<Pick<LogEntry, "startTime" | "endTime">>) => {
+  const updateEntry = useCallback((id: string, patch: Partial<Pick<LogEntry, "startTime" | "endTime" | "memo">>) => {
     setData((prev) => {
       if (!prev) return prev;
       return { ...prev, entries: prev.entries.map((e) => (e.id === id ? { ...e, ...patch } : e)) };

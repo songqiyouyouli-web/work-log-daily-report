@@ -5,7 +5,7 @@ import { LogEntryEditRow } from "./LogEntryEditRow";
 
 type Props = {
   entries: LogEntry[];
-  onUpdate: (id: string, patch: Partial<Pick<LogEntry, "startTime" | "endTime">>) => void;
+  onUpdate: (id: string, patch: Partial<Pick<LogEntry, "startTime" | "endTime" | "memo">>) => void;
   onDelete: (id: string) => void;
 };
 
