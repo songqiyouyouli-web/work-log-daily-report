@@ -43,17 +43,17 @@ export function CopyReportButton({ reportText }: Props) {
         readOnly
         value={reportText}
         rows={16}
-        className="w-full rounded-lg border border-black/10 p-3 font-mono text-sm dark:border-white/10 dark:bg-black"
+        className="w-full rounded-lg border border-black/10 p-3 font-mono text-sm"
       />
       <div className="flex items-center gap-3">
         <button
           type="button"
           onClick={handleCopy}
-          className="rounded-lg bg-foreground px-4 py-2 font-semibold text-background"
+          className="rounded-lg bg-[#2a78d6] px-4 py-2 font-semibold text-white"
         >
           日報をコピー
         </button>
-        {status === "copied" && <span className="text-sm text-green-600 dark:text-green-400">コピーしました</span>}
+        {status === "copied" && <span className="text-sm text-green-600">コピーしました</span>}
         {status === "failed" && (
           <span className="text-sm text-red-500">コピーに失敗しました。上のテキストを選択してコピーしてください</span>
         )}

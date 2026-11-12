@@ -1,20 +1,28 @@
 "use client";
 
+import { contrastingTextColor, taskColor } from "@/lib/taskColors";
 import type { Task } from "@/lib/types";
 
 type Props = {
   task: Task;
+  index: number;
   isRunning: boolean;
   onPress: () => void;
 };
 
-export function TaskButton({ task, isRunning, onPress }: Props) {
+export function TaskButton({ task, index, isRunning, onPress }: Props) {
+  const color = taskColor(index);
+
   return (
     <button
       type="button"
       onClick={onPress}
-      data-running={isRunning}
-      className="min-h-24 w-full select-none rounded-xl border border-black/10 p-4 text-lg font-semibold text-foreground touch-manipulation data-[running=true]:border-transparent data-[running=true]:bg-foreground data-[running=true]:text-background dark:border-white/10"
+      className="min-h-24 w-full select-none rounded-xl border-2 p-4 text-lg font-semibold touch-manipulation"
+      style={
+        isRunning
+          ? { backgroundColor: color, borderColor: color, color: contrastingTextColor(color) }
+          : { backgroundColor: `${color}1a`, borderColor: color, color: "#171717" }
+      }
     >
       {task.name}
     </button>

@@ -16,10 +16,11 @@ export function TaskGrid({ tasks, runningTaskId, onSelectTask }: Props) {
 
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-      {tasks.map((task) => (
+      {tasks.map((task, index) => (
         <TaskButton
           key={task.id}
           task={task}
+          index={index}
           isRunning={task.id === runningTaskId}
           onPress={() => onSelectTask(task.id)}
         />

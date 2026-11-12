@@ -21,7 +21,7 @@ export function TaskManager({ tasks, onAdd, onRename, onDelete }: Props) {
   }
 
   return (
-    <details className="rounded-xl border border-black/10 p-4 dark:border-white/10">
+    <details className="rounded-xl border border-black/10 p-4">
       <summary className="cursor-pointer font-semibold">作業の管理</summary>
       <div className="mt-4 flex flex-col gap-3">
         {tasks.map((task) => (
@@ -30,12 +30,12 @@ export function TaskManager({ tasks, onAdd, onRename, onDelete }: Props) {
               type="text"
               value={task.name}
               onChange={(e) => onRename(task.id, e.target.value)}
-              className="flex-1 rounded-lg border border-black/10 px-3 py-2 dark:border-white/10 dark:bg-black"
+              className="flex-1 rounded-lg border border-black/10 px-3 py-2"
             />
             <button
               type="button"
               onClick={() => onDelete(task.id)}
-              className="rounded-lg border border-black/10 px-3 py-2 text-sm text-red-500 dark:border-white/10"
+              className="rounded-lg border border-black/10 px-3 py-2 text-sm text-red-500"
             >
               削除
             </button>
@@ -47,12 +47,12 @@ export function TaskManager({ tasks, onAdd, onRename, onDelete }: Props) {
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
             placeholder="新しい作業名"
-            className="flex-1 rounded-lg border border-black/10 px-3 py-2 dark:border-white/10 dark:bg-black"
+            className="flex-1 rounded-lg border border-black/10 px-3 py-2"
           />
           <button
             type="button"
             onClick={handleAdd}
-            className="rounded-lg bg-foreground px-3 py-2 text-sm text-background"
+            className="rounded-lg bg-[#2a78d6] px-3 py-2 text-sm text-white"
           >
             追加
           </button>
