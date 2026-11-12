@@ -1,20 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type Props = {
   reportText: string;
 };
 
 export function CopyReportButton({ reportText }: Props) {
+  const [value, setValue] = useState(reportText);
   const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
+
+  useEffect(() => setValue(reportText), [reportText]);
 
   async function handleCopy() {
     try {
-      await navigator.clipboard.writeText(reportText);
+      await navigator.clipboard.writeText(value);
       setStatus("copied");
     } catch {
-      setStatus(legacyCopyFallback(reportText) ? "copied" : "failed");
+      setStatus(legacyCopyFallback(value) ? "copied" : "failed");
     }
     setTimeout(() => setStatus("idle"), 2000);
   }
@@ -40,8 +43,8 @@ export function CopyReportButton({ reportText }: Props) {
   return (
     <div className="flex flex-col gap-2">
       <textarea
-        readOnly
-        value={reportText}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
         rows={16}
         className="w-full rounded-lg border border-black/10 p-3 font-mono text-sm"
       />
