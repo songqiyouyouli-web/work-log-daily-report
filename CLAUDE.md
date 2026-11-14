@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project status
 
-MVP is implemented: recording screen (`app/page.tsx`), aggregation screen (`app/summary/page.tsx`), localStorage persistence (`lib/storage.ts`, `lib/useWorkLog.ts`), and the today/next-day goal fields are done and manually verified in-browser. Not yet done: Git init, GitHub public repo, Vercel deploy, and the write-up article. Do not re-scaffold the project — build on the existing `app/`, `components/`, `lib/` structure.
+MVP is implemented and live: recording screen (`app/page.tsx`), aggregation screen (`app/summary/page.tsx`), localStorage persistence (`lib/storage.ts`, `lib/useWorkLog.ts`), today/next-day goal fields, AI-assisted report composition, and a grouped-by-task aggregation view are done and manually verified in-browser. Git/GitHub/Vercel are already set up (public repo `songqiyouyouli-web/work-log-daily-report`, deployed at `https://work-log-daily-report.vercel.app/`). The write-up article draft lives at `docs/article.md` — keep it updated as features land, since it's part of the assignment deliverable. Do not re-scaffold the project — build on the existing `app/`, `components/`, `lib/` structure.
 
 ## What this app is
 

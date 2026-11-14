@@ -12,7 +12,7 @@ export function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex gap-2 border-b border-black/10 bg-white px-4 py-3">
+    <nav className="border-b border-black/5 bg-[#fbfaf7] px-4 py-3 shadow-sm">
       <div className="mx-auto flex w-full max-w-md gap-2 sm:max-w-xl">
         {LINKS.map((link) => {
           const isActive = pathname === link.href;
@@ -21,7 +21,7 @@ export function NavBar() {
               key={link.href}
               href={link.href}
               data-active={isActive}
-              className="flex-1 rounded-lg px-4 py-2 text-center text-sm font-semibold text-zinc-600 data-[active=true]:bg-[#2a78d6] data-[active=true]:text-white"
+              className="flex-1 rounded-xl px-4 py-2 text-center text-sm font-semibold text-[#5e5953] transition-colors data-[active=true]:bg-[#5a7389] data-[active=true]:text-white data-[active=true]:shadow-sm"
             >
               {link.label}
             </Link>

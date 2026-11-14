@@ -33,19 +33,19 @@ export function ReportComposer({ initialNotes, todayGoal, nextDayGoal, onCompose
 
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-sm font-semibold">メモ（箇条書きでOK）</label>
+      <label className="text-sm font-semibold text-[#2e2b28]">メモ（箇条書きでOK）</label>
       <textarea
         value={notes}
         onChange={(e) => setNotes(e.target.value)}
         rows={5}
-        className="w-full rounded-lg border border-black/10 p-3 text-sm dark:border-white/10 dark:bg-black"
+        className="w-full rounded-lg border border-black/10 p-3 text-sm"
       />
       <div className="flex items-center gap-3">
         <button
           type="button"
           onClick={handleCompose}
           disabled={status === "loading"}
-          className="rounded-lg bg-foreground px-4 py-2 font-semibold text-background disabled:opacity-50"
+          className="rounded-lg bg-[#5a7389] px-4 py-2 font-semibold text-white disabled:opacity-50"
         >
           {status === "loading" ? "作成中…" : "AIで文章にする"}
         </button>

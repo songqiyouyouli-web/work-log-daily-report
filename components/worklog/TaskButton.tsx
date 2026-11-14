@@ -17,7 +17,7 @@ export function TaskButton({ task, index, isRunning, onPress }: Props) {
     <button
       type="button"
       onClick={onPress}
-      className="min-h-24 w-full select-none rounded-xl border-2 p-4 text-lg font-semibold touch-manipulation"
+      className="min-h-24 w-full select-none rounded-2xl border-2 p-4 text-lg font-semibold shadow-sm touch-manipulation"
       style={
         isRunning
           ? { backgroundColor: color, borderColor: color, color: contrastingTextColor(color) }

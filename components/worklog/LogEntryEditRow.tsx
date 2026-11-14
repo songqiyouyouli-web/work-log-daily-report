@@ -14,31 +14,30 @@ export function LogEntryEditRow({ entry, onUpdate, onDelete }: Props) {
   const durationMs = new Date(endTime).getTime() - new Date(entry.startTime).getTime();
 
   return (
-    <div className="flex flex-col gap-2 rounded-lg border border-black/10 p-3 dark:border-white/10">
+    <div className="flex flex-col gap-2 rounded-lg bg-[#f2efea] p-3">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="min-w-20 flex-1 font-semibold">{entry.taskName}</span>
         <input
           type="time"
           value={toTimeInputValue(entry.startTime)}
           onChange={(e) => onUpdate(entry.id, { startTime: withTimeInputValue(entry.startTime, e.target.value) })}
-          className="rounded border border-black/10 px-2 py-1 dark:border-white/10 dark:bg-black"
+          className="rounded border border-black/10 bg-[#fbfaf7] px-2 py-1"
         />
-        <span>〜</span>
+        <span className="text-[#5e5953]">〜</span>
         {entry.endTime === null ? (
-          <span className="text-sm text-zinc-500">実行中</span>
+          <span className="text-sm text-[#5e5953]">実行中</span>
         ) : (
           <input
             type="time"
             value={toTimeInputValue(entry.endTime)}
             onChange={(e) => onUpdate(entry.id, { endTime: withTimeInputValue(entry.endTime as string, e.target.value) })}
-            className="rounded border border-black/10 px-2 py-1 dark:border-white/10 dark:bg-black"
+            className="rounded border border-black/10 bg-[#fbfaf7] px-2 py-1"
           />
         )}
-        <span className="font-mono text-sm text-zinc-500">{formatDuration(durationMs)}</span>
+        <span className="font-mono text-sm text-[#5e5953]">{formatDuration(durationMs)}</span>
         <button
           type="button"
           onClick={() => onDelete(entry.id)}
-          className="rounded border border-black/10 px-2 py-1 text-sm text-red-500 dark:border-white/10"
+          className="ml-auto rounded border border-black/10 bg-[#fbfaf7] px-2 py-1 text-sm text-red-500"
         >
           削除
         </button>
@@ -48,7 +47,7 @@ export function LogEntryEditRow({ entry, onUpdate, onDelete }: Props) {
         value={entry.memo ?? ""}
         onChange={(e) => onUpdate(entry.id, { memo: e.target.value })}
         placeholder="気づきメモ"
-        className="rounded border border-black/10 px-2 py-1 text-sm dark:border-white/10 dark:bg-black"
+        className="rounded border border-black/10 bg-[#fbfaf7] px-2 py-1 text-sm"
       />
     </div>
   );

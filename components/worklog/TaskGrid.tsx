@@ -11,7 +11,7 @@ type Props = {
 
 export function TaskGrid({ tasks, runningTaskId, onSelectTask }: Props) {
   if (tasks.length === 0) {
-    return <p className="text-sm text-zinc-500">作業ボタンがありません。下の「作業の管理」から追加してください。</p>;
+    return <p className="text-sm text-[#5e5953]">作業ボタンがありません。下の「作業の管理」から追加してください。</p>;
   }
 
   return (

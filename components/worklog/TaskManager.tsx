@@ -21,8 +21,8 @@ export function TaskManager({ tasks, onAdd, onRename, onDelete }: Props) {
   }
 
   return (
-    <details className="rounded-xl border border-black/10 p-4">
-      <summary className="cursor-pointer font-semibold">作業の管理</summary>
+    <details className="rounded-2xl border border-black/5 bg-[#fbfaf7] p-4 shadow-sm">
+      <summary className="cursor-pointer font-semibold text-[#2e2b28]">作業の管理</summary>
       <div className="mt-4 flex flex-col gap-3">
         {tasks.map((task) => (
           <div key={task.id} className="flex items-center gap-2">
@@ -52,7 +52,7 @@ export function TaskManager({ tasks, onAdd, onRename, onDelete }: Props) {
           <button
             type="button"
             onClick={handleAdd}
-            className="rounded-lg bg-[#2a78d6] px-3 py-2 text-sm text-white"
+            className="rounded-lg bg-[#5a7389] px-3 py-2 text-sm font-semibold text-white"
           >
             追加
           </button>

@@ -1,12 +1,10 @@
 const TASK_COLORS = [
-  "#2a78d6", // blue
-  "#1baf7a", // aqua
-  "#eda100", // yellow
-  "#008300", // green
-  "#4a3aa7", // violet
-  "#e34948", // red
-  "#e87ba4", // magenta
-  "#eb6834", // orange
+  "#9a6a76", // dusty rose
+  "#a2735e", // terracotta
+  "#6b8576", // sage
+  "#88765f", // mocha
+  "#5a7389", // dusty blue
+  "#9a8655", // mustard
 ];
 
 export function taskColor(index: number): string {

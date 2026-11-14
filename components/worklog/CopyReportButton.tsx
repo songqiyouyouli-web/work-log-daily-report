@@ -52,7 +52,7 @@ export function CopyReportButton({ reportText }: Props) {
         <button
           type="button"
           onClick={handleCopy}
-          className="rounded-lg bg-[#2a78d6] px-4 py-2 font-semibold text-white"
+          className="rounded-lg bg-[#5a7389] px-4 py-2 font-semibold text-white"
         >
           日報をコピー
         </button>

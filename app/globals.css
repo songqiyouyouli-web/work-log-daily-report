@@ -1,10 +1,8 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f2efea;
+  --foreground: #2e2b28;
   color-scheme: light;
 }
 
